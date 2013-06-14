@@ -4,9 +4,9 @@
 module Practice {
      // exportして初めてモジュールの外で使える
     export class ShowLog1 {
-        private list: any[];
-        private index: number;
-        private timerID: number;
+        list: any[];
+        index: number;
+        timerID: number;
         constructor(list: any[]) {
             this.list = list;
             this.index = 0;
@@ -25,9 +25,22 @@ module Practice {
     }//ClassEnd
 }
 
+class ShowLog2 extends Practice.ShowLog1{
+    list: number[][];
+    show(): void {
+        if (this.list.length > this.index) {
+            var i = this.index;
+            var l = this.list;
+            var str = "(" + l[i].join(", ") + ")";
+            console.log(str);
+            this.index++;
+        }
+    }
+}
 
 window.onload = () => {
     var el = document.getElementById('content');
     console.log("--- Start showLog1 ---");
-    new Practice.ShowLog1([[1, 2], [3, 0], [4, 5]]);
+    //new Practice.ShowLog1([[1, 2], [3, 0], [4, 5]]);
+    new ShowLog2([[1, 2], [3, 0], [4, 5]]);
 };

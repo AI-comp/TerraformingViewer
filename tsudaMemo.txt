@@ -33,3 +33,5 @@ TypescriptÇÃthisÇ…íçà”
 http://stackoverflow.com/questions/16077565/setinterval-behaviour-in-typescript 	
 	 When you use () => TypeScript preserves the lexical scope
 	 
+http://d.hatena.ne.jp/esperia/20100321/1269203457
+	setInterval() Å® this Ç≈Ç–Ç¡Ç©Ç©Ç¡ÇΩ
