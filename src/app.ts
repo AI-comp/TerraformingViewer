@@ -13,6 +13,7 @@ class Greeter {
 
     start() {
         this.timerToken = setInterval(() => this.span.innerHTML = new Date().toUTCString(), 500);
+        this.timerToken = setInterval(() => console.log(new Date().toUTCString()), 600);
     }
 
     stop() {
@@ -25,4 +26,6 @@ window.onload = () => {
     var el = document.getElementById('content');
     var greeter = new Greeter(el);
     greeter.start();
+    console.log("Hello world");
+    alert("p");
 };

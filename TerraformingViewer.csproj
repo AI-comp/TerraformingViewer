@@ -22,12 +22,42 @@
     <Content Include="src\app.js">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
+    <Content Include="src\lib\enchant.js" />
+    <Content Include="src\lib\plugins\avatar.enchant.js" />
+    <Content Include="src\lib\plugins\box2d.enchant.js" />
+    <Content Include="src\lib\plugins\collada.gl.enchant.js" />
+    <Content Include="src\lib\plugins\extendMap.enchant.js" />
+    <Content Include="src\lib\plugins\gl.enchant.js" />
+    <Content Include="src\lib\plugins\memory.enchant.js" />
+    <Content Include="src\lib\plugins\mmd.gl.enchant.js" />
+    <Content Include="src\lib\plugins\nineleap.enchant.js" />
+    <Content Include="src\lib\plugins\physics.gl.enchant.js" />
+    <Content Include="src\lib\plugins\primitive.gl.enchant.js" />
+    <Content Include="src\lib\plugins\socket.enchant.js" />
+    <Content Include="src\lib\plugins\tl.enchant.js" />
+    <Content Include="src\lib\plugins\twitter.enchant.js" />
+    <Content Include="src\lib\plugins\ui.enchant.js" />
+    <Content Include="src\lib\plugins\util.enchant.js" />
+    <Content Include="src\lib\plugins\widget.enchant.js" />
+    <Content Include="src\showLog1.js">
+      <DependentUpon>showLog1.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\showLog1.ts" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

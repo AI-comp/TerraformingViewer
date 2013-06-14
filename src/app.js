@@ -11,6 +11,9 @@ var Greeter = (function () {
         this.timerToken = setInterval(function () {
             return _this.span.innerHTML = new Date().toUTCString();
         }, 500);
+        this.timerToken = setInterval(function () {
+            return console.log(new Date().toUTCString());
+        }, 600);
     };
     Greeter.prototype.stop = function () {
         clearTimeout(this.timerToken);
@@ -21,5 +24,7 @@ window.onload = function () {
     var el = document.getElementById('content');
     var greeter = new Greeter(el);
     greeter.start();
+    console.log("Hello world");
+    alert("p");
 };
 //@ sourceMappingURL=app.js.map
