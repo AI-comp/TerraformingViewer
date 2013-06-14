@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+	<script src='src/lib/enchant.js'></script>
+    <script src="src/showImage.js"></script>
+	<style type="text/css">
+		div#enchant-stage {
+			width: 800px;
+			height: 600px;
+		}
+		textarea#commands { }
+	</style>
+</head>
+<body>
+    <div id="enchant-stage"></div>
+    <textarea id="commands"></textarea>
+    <button name="draw" onclick="App.Game.game.update(document.getElementById('commands').value)">draw</button>
+</body>
+</html>

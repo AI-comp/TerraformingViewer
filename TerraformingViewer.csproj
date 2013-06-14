@@ -18,10 +18,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="css\app.css" />
-    <Content Include="main.htm" />
+    <Content Include="index.htm" />
     <Content Include="src\app.js">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
+    <Content Include="src\types\enchant.d.ts" />
     <Content Include="src\lib\enchant.js" />
     <Content Include="src\lib\plugins\avatar.enchant.js" />
     <Content Include="src\lib\plugins\box2d.enchant.js" />
@@ -39,6 +40,10 @@
     <Content Include="src\lib\plugins\ui.enchant.js" />
     <Content Include="src\lib\plugins\util.enchant.js" />
     <Content Include="src\lib\plugins\widget.enchant.js" />
+    <TypeScriptCompile Include="src\showImage.ts" />
+    <Content Include="src\showImage.js">
+      <DependentUpon>showImage.ts</DependentUpon>
+    </Content>
     <Content Include="src\showLog1.js">
       <DependentUpon>showLog1.ts</DependentUpon>
     </Content>
