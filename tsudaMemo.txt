@@ -1,0 +1,35 @@
+http://kokufu.blogspot.jp/2013/03/visual-studio-javascript.html
+	Visual Studio で Javascript のデバッグ
+
+http://d.hatena.ne.jp/kafujita/20121008/1349704055
+	「HTMLページ」というのを選べばhtmlファイルが追加できるので「index.html」という名前で追加します。ここで名前を「index.html」にしておかないと、実行ボタンを押したときに表示するファイルとしてIE（IIS？）が認識してくれないようです。
+	（どこかに設定する場所があるのかもしれませんが、調べきれてません）
+	
+http://kokufu.blogspot.jp/2013/03/visual-studio-javascript.html
+	起動ページ
+	デフォルトではデバッグを開始した時に開いている(選択している)ページがエントリーポイントになります。
+	
+	起動ページ固定
+		プロジェクトのプロパティ->Web->開始動作
+		
+http://ratememo.blog17.fc2.com/blog-entry-591.html
+	直前のコミットとマージしてコミットしなおすことができます。
+	
+	
+Typescriptのthisに注意
+	thisが意図しているものと違うのになっていると、this.メンバの呼び出しでおかしな挙動
+	
+	 this.timerID = setInterval(()=>this.show(), 500);
+	 	thisはthisそのまま。これが望ましい挙動をする。
+	 	
+	 	コンパイル時に、var _this = this;という文が追加される。この_thisに本当に参照したObjが入っているから、コールバック的なことしたときも_thisから望ましいObjを参照してくれる。
+	 	//---------------
+	 	()=>this.show()は
+	 	function () {return _this.show();}
+	 	に変換される。setIntervalで実行される関数が、_thisを参照しているのがわかる。
+	 this.timerID = setInterval(this.show, 500);
+	 	intervalでshowを実行した際に、showの中で、thisで呼び出されるのがWindowsというObjectになっていた。
+	 	
+http://stackoverflow.com/questions/16077565/setinterval-behaviour-in-typescript 	
+	 When you use () => TypeScript preserves the lexical scope
+	 
