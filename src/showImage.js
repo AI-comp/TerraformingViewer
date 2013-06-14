@@ -8,29 +8,24 @@ var App;
 (function (App) {
     var Robot = (function (_super) {
         __extends(Robot, _super);
-        function Robot(x, y) {
+        function Robot(list) {
             var _this = this;
                 _super.call(this, 105, 100);
-            this.x = x;
-            this.y = y;
+            this.pos = 0;
+            this.list = list;
+            this.x = list[0][0];
+            this.y = list[0][1];
             this.image = Game.game.assets['img/robot.png'];
             this.on('enterframe', function () {
                 return _this.update();
             });
         }
         Robot.prototype.update = function () {
-            var mode;
-            if(this.x == 0) {
-                mode = 0;
-            } else if(this.x == 500) {
-                mode = 1;
-            }
-            if(mode == 0) {
-                this.x += 100;
-                this.y += 100;
-            } else {
-                this.x -= 100;
-                this.y -= 100;
+            this.x = this.list[this.pos][0];
+            this.y = this.list[this.pos][1];
+            this.pos++;
+            if(this.pos == this.list.length) {
+                this.pos = 0;
             }
         };
         return Robot;
@@ -48,7 +43,24 @@ var App;
                 'img/robot.png'
             ]);
             this.onload = function () {
-                var robot = new Robot(0, 0);
+                var robot = new Robot([
+                    [
+                        0, 
+                        0
+                    ], 
+                    [
+                        200, 
+                        200
+                    ], 
+                    [
+                        200, 
+                        0
+                    ], 
+                    [
+                        0, 
+                        200
+                    ]
+                ]);
                 _this.rootScene.addChild(robot);
             };
         }
