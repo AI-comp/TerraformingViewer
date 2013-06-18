@@ -11,8 +11,8 @@ var App;
         function Robot(list) {
             var _this = this;
                 _super.call(this, 105, 100);
-            this.pos = 0;
             this.list = list;
+            this.pos = 0;
             this.x = list[0][0];
             this.y = list[0][1];
             this.image = Game.game.assets['img/robot.png'];

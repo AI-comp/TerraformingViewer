@@ -10,10 +10,9 @@ module App {
   export class Robot extends enchant.Sprite {
     list: number[][];
     pos: number;
-    constructor(list: number[][]) {
+    constructor(private list: number[][]) {
       super(105, 100);
       this.pos = 0;
-      this.list = list;
       this.x = list[0][0];
       this.y = list[0][1];
       this.image = Game.game.assets['img/robot.png'];
@@ -41,13 +40,11 @@ module App {
       Game.entities = new Array();
       this.fps = 1;
       this.preload(['img/robot.png']);
-    
 
       this.onload = () => {
         var robot = new Robot([[0, 0], [200, 200], [200, 0], [0, 200]]);
         this.rootScene.addChild(robot);
       }
-
     }
   }
 }
