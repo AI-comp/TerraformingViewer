@@ -1,0 +1,19 @@
+{
+    "name": "tscheme"
+  , "version": "0.9.x"
+  , "dependencies": {
+    }
+  , "devDependencies": {
+        "mocha": "*"
+      , "should": "*"
+      , "sinon": "*"
+      , "typescript": "*"
+    }
+  , "scripts": {
+        "test": "make clean all && mocha test/test.js -t 10000"
+    }
+  , "engines": {
+        "node": "0.10.x"
+      , "npm": "*"
+    }
+}
