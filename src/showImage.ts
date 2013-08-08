@@ -7,6 +7,36 @@ interface Window {
 window.enchant();
 
 module App {
+  enum Obj {
+    HOLE,
+    NONE,
+    initial,
+  }
+
+  enum Landform {
+    HOLE,
+    BASE,
+    WASTELAND,
+    SETTLEMENT,
+  }
+
+  interface Tile {
+    x: number;
+    robots: number;
+    y: number;
+    obj: Obj;
+    materialAmount: number;
+    ownerID: number;
+    landform: Landform;
+  }
+
+  interface Data {
+    currentTurn: number;
+    maxTurn: number;
+    playerID: number;
+    tiles: Tile[][];
+  }
+
   export class Robot extends enchant.Sprite {
     list: number[][];
     pos: number;
@@ -39,9 +69,10 @@ module App {
       Game.game = this;
       Game.entities = new Array();
       this.fps = 1;
-      this.preload(['img/robot.png']);
+      this.preload(['img/robot.png']);      
 
       this.onload = () => {
+        alert("hoge");
         var robot = new Robot([[0, 0], [200, 200], [200, 0], [0, 200]]);
         this.rootScene.addChild(robot);
       }
