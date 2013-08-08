@@ -1,4 +1,4 @@
-module enchant {
+declare module enchant {
   export class Event {
     static LOAD: string;
     static PROGRESS: string;
@@ -110,8 +110,7 @@ module enchant {
     checkTile(x: number, y: number);
     hitTest(x: number, y: number);
     redraw(x: number, y: number, width: number, height: number);
-  };
-
+  }
   export class Group extends Node {
     firstChild: Node;
     lastChild: Node;
