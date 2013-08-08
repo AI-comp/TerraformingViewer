@@ -1,5 +1,4 @@
 ///<reference path='types/enchant.d.ts'/>
-declare var enchant: enchant;
 
 interface Window {
   enchant: Function;
@@ -37,8 +36,18 @@ module App {
     tiles: Tile[][];
   }
 
+  export class Background extends enchant.Sprite {
+    constructor() {
+      super(1024, 495);
+      this.x = 0;
+      this.y = 0;
+      this.image = Game.game.assets['img/map.png'];
+    
+      //this.on('enterframe', () => this.update());
+    }
+  }
+
   export class Robot extends enchant.Sprite {
-    list: number[][];
     pos: number;
     constructor(private list: number[][]) {
       super(105, 100);
@@ -69,12 +78,15 @@ module App {
       Game.game = this;
       Game.entities = new Array();
       this.fps = 1;
-      this.preload(['img/robot.png']);      
+      this.preload(['img/map.png']);
+      this.preload(['img/robot.png']);
 
       this.onload = () => {
-        alert("hoge");
+        var background = new Background();
         var robot = new Robot([[0, 0], [200, 200], [200, 0], [0, 200]]);
+        this.rootScene.addChild(background);
         this.rootScene.addChild(robot);
+        var game = this;
       }
     }
   }
