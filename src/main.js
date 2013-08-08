@@ -35,6 +35,35 @@ var App;
     })(enchant.Sprite);
     App.Background = Background;
 
+    var Hex = (function (_super) {
+        __extends(Hex, _super);
+        function Hex(x, y, list) {
+            var _this = this;
+            _super.call(this, 48, 48);
+            this.list = list;
+            this.pos = 0;
+            this.x = x;
+            this.y = y;
+            this.image = Game.game.assets['img/hex/hex48all.png'];
+
+            this.on('enterframe', function () {
+                return _this.update();
+            });
+        }
+        Hex.prototype.update = function () {
+            //if (this.updated) {
+            this.owner = this.list[this.pos];
+            this.frame = this.owner;
+            this.pos++;
+            if (this.pos == this.list.length) {
+                this.pos = 0;
+            }
+            this.updated = false;
+        };
+        return Hex;
+    })(enchant.Sprite);
+    App.Hex = Hex;
+
     var Robot = (function (_super) {
         __extends(Robot, _super);
         function Robot(list) {
@@ -72,12 +101,34 @@ var App;
             this.fps = 1;
             this.preload(['img/map.png']);
             this.preload(['img/robot.png']);
+            this.preload(['img/hex/hex48all.png']);
 
             this.onload = function () {
                 var background = new Background();
-                var robot = new Robot([[0, 0], [200, 200], [200, 0], [0, 200]]);
                 _this.rootScene.addChild(background);
-                _this.rootScene.addChild(robot);
+
+                var hexSize = 48;
+                var i, j;
+                var posx = hexSize * 4, posy = 12;
+                for (i = 7; i < 14; i++) {
+                    posx = 92 - hexSize / 2 * (i - 10);
+                    for (j = 0; j < i; j++) {
+                        var hex = new Hex(posx, posy, [0, 1, 2, 3]);
+                        _this.rootScene.addChild(hex);
+                        posx += hexSize;
+                    }
+                    posy += hexSize * 3 / 4;
+                }
+
+                for (i = 12; i > 6; i--) {
+                    posx = 92 - hexSize / 2 * (i - 10);
+                    for (j = 0; j < i; j++) {
+                        var hex = new Hex(posx, posy, [2, 3, 0, 1]);
+                        _this.rootScene.addChild(hex);
+                        posx += hexSize;
+                    }
+                    posy += hexSize * 3 / 4;
+                }
             };
         }
         return Game;
@@ -89,4 +140,4 @@ window.onload = function () {
     var game = new App.Game(800, 600);
     game.start();
 };
-//@ sourceMappingURL=showImage.js.map
+//@ sourceMappingURL=main.js.map

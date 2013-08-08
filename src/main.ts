@@ -45,6 +45,33 @@ module App {
     }
   }
 
+  export class Hex extends enchant.Sprite {
+    pos: number;
+    owner: number;
+    updated: boolean;
+    constructor(x: number, y: number, private list: number[]) {
+      super(48, 48);
+      this.pos = 0;
+      this.x = x;
+      this.y = y;
+      this.image = Game.game.assets['img/hex/hex48all.png'];
+
+      this.on('enterframe', () => this.update());
+    }
+
+    update(): void {
+      //if (this.updated) {
+        this.owner = this.list[this.pos];
+        this.frame = this.owner;
+        this.pos++;
+        if (this.pos == this.list.length) {
+          this.pos = 0;
+        }
+        this.updated = false;
+      //}
+    }
+  }
+
   export class Robot extends enchant.Sprite {
     pos: number;
     constructor(private list: number[][]) {
@@ -77,13 +104,35 @@ module App {
       Game.entities = new Array();
       this.fps = 1;
       this.preload(['img/map.png']);
-      this.preload(['img/robot.png']);      
+      this.preload(['img/robot.png']);
+      this.preload(['img/hex/hex48all.png']);      
 
       this.onload = () => {
         var background = new Background();
-        var robot = new Robot([[0, 0], [200, 200], [200, 0], [0, 200]]);
         this.rootScene.addChild(background);
-        this.rootScene.addChild(robot);
+
+        var hexSize = 48;
+        var i, j;
+        var posx = hexSize * 4, posy = 12;
+        for (i = 7; i < 14; i++) {
+          posx = 92 - hexSize / 2 * (i - 10);
+          for (j = 0; j < i; j++) {
+            var hex = new Hex(posx, posy, [0, 1, 2, 3]);
+            this.rootScene.addChild(hex);
+            posx += hexSize;
+          }
+          posy += hexSize * 3 / 4;
+        }
+
+        for (i = 12; i > 6; i--) {
+          posx = 92 - hexSize / 2 * (i - 10);
+          for (j = 0; j < i; j++) {
+            var hex = new Hex(posx, posy, [2, 3, 0, 1]);
+            this.rootScene.addChild(hex);
+            posx += hexSize;
+          }
+          posy += hexSize * 3 / 4;
+        }
       }
     }
   }

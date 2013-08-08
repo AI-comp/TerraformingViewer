@@ -37,10 +37,7 @@
     <Content Include="src\lib\plugins\ui.enchant.js" />
     <Content Include="src\lib\plugins\util.enchant.js" />
     <Content Include="src\lib\plugins\widget.enchant.js" />
-    <TypeScriptCompile Include="src\showImage.ts" />
-    <Content Include="src\showImage.js">
-      <DependentUpon>showImage.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="src\main.ts" />
     <Content Include="src\showLog1.js">
       <DependentUpon>showLog1.ts</DependentUpon>
     </Content>
